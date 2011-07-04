@@ -1,0 +1,5 @@
+#surefire
+#Mon Jul 04 15:36:39 CEST 2011
+user.dir=/home/ryu/Pulpit/eclipse_projects/Zadanie1/string-calc
+localRepository=/home/ryu/.m2/repository
+basedir=/home/ryu/Pulpit/eclipse_projects/Zadanie1/string-calc
