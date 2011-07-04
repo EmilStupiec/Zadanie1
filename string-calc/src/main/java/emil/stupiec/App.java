@@ -1,19 +1,23 @@
 package emil.stupiec;
 
 /**
- * Hello world!
+ * main class
  *
  */
 public class App 
 {
+	//creating calculator object with add method
 	private static Kata kata=new Kata();
 	
 	public static Integer add(String numbers){
-		return kata.add(numbers);
+		//help string
+		String numbers2="1\n2\n3,4\n5,6";
+		return kata.add(numbers2);
 	}
 	
     public static void main( String[] args )
     {
+    	//print result of add function
     	System.out.println(add(args[0]));
     }
 }
