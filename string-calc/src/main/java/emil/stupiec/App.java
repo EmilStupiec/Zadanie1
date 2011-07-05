@@ -11,7 +11,7 @@ public class App
 	
 	public static Integer add(String numbers){
 		//help string
-		String numbers2="1\n2\n3,4\n5,6";
+		String numbers2="//:,-1000,34\n66,5:-15";
 		return kata.add(numbers2);
 	}
 	

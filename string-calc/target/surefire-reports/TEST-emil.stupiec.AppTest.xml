@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite failures="0" time="0.038" errors="0" skipped="0" tests="1" name="emil.stupiec.AppTest">
+<testsuite failures="0" time="0.05" errors="0" skipped="0" tests="1" name="emil.stupiec.AppTest">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="sun.boot.library.path" value="/usr/lib/jvm/java-6-sun-1.6.0.24/jre/lib/i386"/>
@@ -19,7 +19,7 @@
     <property name="basedir" value="/home/ryu/Pulpit/eclipse_projects/Zadanie1/string-calc"/>
     <property name="java.endorsed.dirs" value="/usr/lib/jvm/java-6-sun-1.6.0.24/jre/lib/endorsed"/>
     <property name="os.arch" value="i386"/>
-    <property name="surefire.real.class.path" value="/home/ryu/Pulpit/eclipse_projects/Zadanie1/string-calc/target/surefire/surefirebooter3239629214801676879.jar"/>
+    <property name="surefire.real.class.path" value="/home/ryu/Pulpit/eclipse_projects/Zadanie1/string-calc/target/surefire/surefirebooter4869446839210275052.jar"/>
     <property name="java.io.tmpdir" value="/tmp"/>
     <property name="line.separator" value="
 "/>

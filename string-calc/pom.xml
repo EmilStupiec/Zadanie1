@@ -4,7 +4,7 @@
 
   <groupId>emil.stupiec</groupId>
   <artifactId>string-calc</artifactId>
-  <version>0.1</version>
+  <version>0.3</version>
   <packaging>jar</packaging>
 
   <name>string-calc</name>
