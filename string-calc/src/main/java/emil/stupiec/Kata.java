@@ -1,13 +1,19 @@
 package emil.stupiec;
 
+import java.util.ArrayList;
+import org.omg.CORBA.DynAnyPackage.InvalidValue;
+
 //class for add function
 public class Kata {
 	
 	Kata(){}
 	
-	Integer add(String numbers){
+	Integer add(String numbers) throws InvalidValue{
 		//initialize returning sum
 		Integer sum=null;
+		ArrayList<Integer> negatives=new ArrayList<Integer>();
+		Boolean negative=false;
+		
 		if(numbers.isEmpty()){
 			sum=0;
 		//check if it's only one digit
@@ -26,8 +32,17 @@ public class Kata {
 			String numbers_splited[]=numbers.split(string_matcher);
 			if(numbers_splited.length>=2){
 				sum=0;
-				for(String s: numbers_splited)
+				for(String s: numbers_splited){
+					if(Integer.parseInt(s)<0){
+						negative=true;
+						negatives.add(Integer.parseInt(s));
+					}
 					sum+=Integer.parseInt(s);
+				}
+			}
+			if(negative){
+				InvalidValue IV=new InvalidValue("negatives not allowed\nnegatives passed:"+negatives.toString());
+				throw IV;
 			}
 		}
 		return sum; 
