@@ -1,17 +1,22 @@
 package emil.stupiec;
 
 public class Frame {
-	private Integer frame_id=null;
 	private Boolean strike=null;
 	private Boolean spare=null;
-	private Integer score_try1;
-	private Integer score_try2;
-	private Integer score_try3;
-	Frame(Integer frame_id){
-		this.frame_id=frame_id;
+	private Integer try_number=null;
+	private Integer score_try1=null;
+	private Integer score_try2=null;
+	private Integer score_try3=null;
+	private Boolean final_frame=null;
+	Frame(){
+		this.try_number=0;
 		this.score_try1=0;
 		this.score_try2=0;
 		this.score_try3=0;
+		this.strike=false;
+		this.spare=false;
+		this.spare=false;
+		this.final_frame=false;
 	}
 	public void setStrike(Boolean strike){
 		this.strike=strike;
@@ -24,6 +29,12 @@ public class Frame {
 	}
 	public Boolean getSpare(){
 		return this.spare;
+	}
+	public void setTry_number(Integer try_number){
+		this.try_number=try_number;
+	}
+	public Integer getTry_number(){
+		return this.try_number;
 	}
 	public void setScore_try1(Integer score_try1){
 		this.score_try1=score_try1;
@@ -42,5 +53,19 @@ public class Frame {
 	}
 	public Integer getScore_try3(){
 		return this.score_try3;
+	}
+	public Boolean getFinal_frame(){
+		return this.final_frame;
+	}
+	public void setFinal_frame(Boolean final_frame){
+		this.final_frame=final_frame;
+	}
+	public String toString(){
+		String s="Strike: "+strike+"\n";
+		s+="Spare: "+spare+"\n";
+		s+="Times tried: "+try_number+"\n";
+		s+="Tries Score: "+score_try1+" "+score_try2+" "+score_try3+"\n";
+		s+="Final:"+final_frame+"\n";
+		return s;
 	}
 }
