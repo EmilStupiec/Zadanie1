@@ -8,16 +8,20 @@ public class Game {
 	private Integer pins_knocked=null;
 	Game(){
 		frames=new Frame[10];
+		for (int i = 0; i<10; i++){
+            frames[i] = new Frame();
+		}
 		actual_frame=0;
 		pins_knocked=0;
 		frames[9].setFinal_frame(true);
 	}
 
 	public void roll(Integer pins){
-		if(pins!=10){
+			if(frames[actual_frame].getTry_number()==0)
+				pins_knocked=0;
 			Random generator = new Random();
 			Integer score=generator.nextInt(11-pins);
-			pins_knocked=score;
+			pins_knocked+=score;
 			switch(frames[actual_frame].getTry_number()){
 				case 0:	frames[actual_frame].setScore_try1(score);
 						break;
@@ -29,9 +33,8 @@ public class Game {
 			
 			if(score==10 && frames[actual_frame].getTry_number()==0)
 				frames[actual_frame].setStrike(true);
-			else if(score==10 && frames[actual_frame].getTry_number()==1)
+			else if((frames[actual_frame].getScore_try1()+frames[actual_frame].getScore_try2())==10 && frames[actual_frame].getTry_number()==1)
 				frames[actual_frame].setSpare(true);
-		}
 		frames[actual_frame].setTry_number(frames[actual_frame].getTry_number()+1);
 		if(	frames[actual_frame].getStrike()==true || 
 			(frames[actual_frame].getFinal_frame() && frames[actual_frame].getTry_number()>2) ||
