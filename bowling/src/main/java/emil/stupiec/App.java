@@ -12,6 +12,7 @@ public class App
     		game.roll(0);
     		game.roll(game.getPins_knocked());
     	}
-    	System.out.println("The game:\n"+game.toString());
+    	//System.out.println("The game:\n"+game.toString());
+    	System.out.println(game.score());
     }
 }
