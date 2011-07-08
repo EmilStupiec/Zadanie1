@@ -109,21 +109,23 @@ public class Game {
 		was_bonus=false;
 	}
 	public void roll(Integer pins){
+		if((frames[frame_id].getFinal_frame()==false && frames[frame_id].getTry_number()>1))
+			frame_id++;
 		if(frames[frame_id].getTry_number()==0){
 			frames[frame_id].setScore_try1(pins);
-			if(pins==10)
+			if(pins==10){
 				frames[frame_id].setStrike(true);
 				was_bonus=true;
+			}
 		}else if(frames[frame_id].getTry_number()==1){
 			frames[frame_id].setScore_try2(pins);
-			if(pins+frames[frame_id].getScore_try1()==10 && frames[frame_id].getStrike()==false)
+			if(pins+frames[frame_id].getScore_try1()==10 && frames[frame_id].getStrike()==false){
 				frames[frame_id].setSpare(true);
 				was_bonus=true;
+			}
 		}else if(frames[frame_id].getTry_number()==2)
 			frames[frame_id].setScore_try3(pins);
 		frames[frame_id].setTry_number(frames[frame_id].getTry_number()+1);
-		if((frames[frame_id].getFinal_frame()==false && frames[frame_id].getTry_number()>1))
-			frame_id++;
 	}
 	public Integer score(){
 		Integer score=0;

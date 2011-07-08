@@ -11,7 +11,7 @@ public class App
     	for(int i=0;i<10;i++){
     		game.roll(0);
     		game.roll(game.getPins_knocked());
-    	}
+    		}
     	//System.out.println("The game:\n"+game.toString());
     	System.out.println(game.score());
     }
@@ -36,12 +36,12 @@ public class App
     		game.roll(result1);
     		result2=generator.nextInt(11-result1);
     		game.roll(result2);
-    		if(game.getFinal_frame() && game.getWas_bonus() && result2<10){
+    		if(game.getFinal_frame() && game.getWas_bonus() && (result1+result2<10)){
     			Integer result3=generator.nextInt(11-(result1+result2));
+    			System.out.println("Res3: "+result3+" "+game.getFinal_frame()+" "+game.getWas_bonus()+" "+result1+" "+result2);
     			game.roll(result3);
     		}
     	}
-    	
     	System.out.println(game.toString());
     	System.out.println(game.score());
     }
