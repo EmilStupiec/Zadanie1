@@ -95,40 +95,65 @@ public class Game {
 
 package emil.stupiec;
 
-import java.util.Random;
-
 public class Game {
-	private Integer score;
+	private Frame[] frames;
 	private Integer frame_id;
-	private Integer try_id;
-	private Integer first_try_score;
-	private Boolean last;
+	private Boolean was_bonus;
 	Game(){
-		score=0;
+		frames=new Frame[10];
+		for(int i=0;i<10;i++){
+			frames[i]=new Frame();
+		}
+		frames[9].setFinal_frame(true);
 		frame_id=0;
-		try_id=0;
-		first_try_score=0;
-		last=false;
+		was_bonus=false;
 	}
 	public void roll(Integer pins){
-		Integer try_score=0;
-		Random generator = new Random();
-		if(try_id==0){
-			try_score=generator.nextInt(11);
-			first_try_score=try_score;
-		}else{
-			try_score=generator.nextInt(11-first_try_score);
-		}
-		score+=try_score;
-		try_id++;
+		if(frames[frame_id].getTry_number()==0){
+			frames[frame_id].setScore_try1(pins);
+			if(pins==10)
+				frames[frame_id].setStrike(true);
+				was_bonus=true;
+		}else if(frames[frame_id].getTry_number()==1){
+			frames[frame_id].setScore_try2(pins);
+			if(pins+frames[frame_id].getScore_try1()==10 && frames[frame_id].getStrike()==false)
+				frames[frame_id].setSpare(true);
+				was_bonus=true;
+		}else if(frames[frame_id].getTry_number()==2)
+			frames[frame_id].setScore_try3(pins);
+		frames[frame_id].setTry_number(frames[frame_id].getTry_number()+1);
+		if((frames[frame_id].getFinal_frame()==false && frames[frame_id].getTry_number()>1))
+			frame_id++;
 	}
 	public Integer score(){
+		Integer score=0;
+		for(int i=0;i<10;i++){
+			score+=frames[i].getScore_try1()+frames[i].getScore_try2()+frames[i].getScore_try3();
+			if(frames[i].getStrike() && frames[i].getFinal_frame()==false){
+				if(frames[i+1].getStrike() && frames[i+1].getFinal_frame()==false)
+					score+=10+frames[i+2].getScore_try1();
+				else if(frames[i+1].getStrike() && frames[i+1].getFinal_frame())
+					score+=10;
+				else
+					score+=frames[i+1].getScore_try1()+frames[i+1].getScore_try2();
+			}else if(frames[i].getSpare() && frames[i].getFinal_frame()==false){
+				score+=frames[i+1].getScore_try1();
+			}
+		}
 		return score;
+	}
+	public Boolean getFinal_frame(){
+		return frames[frame_id].getFinal_frame();
 	}
 	public String toString(){
 		String s="";
-
+		s+=frame_id+"\n";
+		for(int i=0;i<10;i++)
+			s+=i+":\n"+frames[i].toString()+"\n";
 		return s;
+	}
+	public Boolean getWas_bonus(){
+		return was_bonus;
 	}
 }
 

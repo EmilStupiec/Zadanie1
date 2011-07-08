@@ -1,13 +1,13 @@
 package emil.stupiec;
 
 public class Frame {
-	private Boolean strike=null;
-	private Boolean spare=null;
-	private Integer try_number=null;
-	private Integer score_try1=null;
-	private Integer score_try2=null;
-	private Integer score_try3=null;
-	private Boolean final_frame=null;
+	private Boolean strike;
+	private Boolean spare;
+	private Integer try_number;
+	private Integer score_try1;
+	private Integer score_try2;
+	private Integer score_try3;
+	private Boolean final_frame;
 	Frame(){
 		this.try_number=0;
 		this.score_try1=0;
@@ -59,6 +59,9 @@ public class Frame {
 	}
 	public void setFinal_frame(Boolean final_frame){
 		this.final_frame=final_frame;
+	}
+	public void inc_try_number(){
+		try_number++;
 	}
 	public String toString(){
 		String s="Strike: "+strike+"\n";
