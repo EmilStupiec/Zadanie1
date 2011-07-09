@@ -1,12 +1,18 @@
 package emil.stupiec;
 
+//class representing frame in game
 public class Frame {
+	//variable that says if there was a strike in frame
 	private Boolean strike;
+	//variable that says if there was a spare in frame
 	private Boolean spare;
+	//the numbers of tries in frame(if was strike it equals 1, if it is last, 3, other equals 2)
 	private Integer try_number;
+	//scores for every possible try
 	private Integer score_try1;
 	private Integer score_try2;
 	private Integer score_try3;
+	//boolean variable representing last frame in game
 	private Boolean final_frame;
 	Frame(){
 		this.try_number=0;
@@ -18,6 +24,7 @@ public class Frame {
 		this.spare=false;
 		this.final_frame=false;
 	}
+	//geters and setters for most class objects
 	public void setStrike(Boolean strike){
 		this.strike=strike;
 	}

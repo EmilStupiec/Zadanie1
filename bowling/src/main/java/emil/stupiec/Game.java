@@ -96,8 +96,11 @@ public class Game {
 package emil.stupiec;
 
 public class Game {
+	//array for objects representing frame
 	private Frame[] frames;
+	//actual frame in game
 	private Integer frame_id;
+	//true if in game was strike or spare
 	private Boolean was_bonus;
 	Game(){
 		frames=new Frame[10];
@@ -109,35 +112,48 @@ public class Game {
 		was_bonus=false;
 	}
 	public void roll(Integer pins){
-		if((frames[frame_id].getFinal_frame()==false && frames[frame_id].getTry_number()>1))
+		//if player tried two times i actual frame,(and it is not last frame) go to next frame
+		if((frames[frame_id].getFinal_frame()==false && frames[frame_id].getTry_number()>1)||frames[frame_id].getStrike())
 			frame_id++;
+		//if first try in frame
 		if(frames[frame_id].getTry_number()==0){
 			frames[frame_id].setScore_try1(pins);
+			//set strike for frame
 			if(pins==10){
 				frames[frame_id].setStrike(true);
 				was_bonus=true;
 			}
+		//if second try in frame
 		}else if(frames[frame_id].getTry_number()==1){
 			frames[frame_id].setScore_try2(pins);
+			//set spare for frame
 			if(pins+frames[frame_id].getScore_try1()==10 && frames[frame_id].getStrike()==false){
 				frames[frame_id].setSpare(true);
 				was_bonus=true;
 			}
+		//if third try in frame(only for last frame)
 		}else if(frames[frame_id].getTry_number()==2)
 			frames[frame_id].setScore_try3(pins);
 		frames[frame_id].setTry_number(frames[frame_id].getTry_number()+1);
 	}
 	public Integer score(){
 		Integer score=0;
+		//for every frame
 		for(int i=0;i<10;i++){
+			//sum its scores
 			score+=frames[i].getScore_try1()+frames[i].getScore_try2()+frames[i].getScore_try3();
+			//if there was a strike in frame and it's not a last frame
 			if(frames[i].getStrike() && frames[i].getFinal_frame()==false){
+				//if there was a strike in frame+1 and it's not a last frame
 				if(frames[i+1].getStrike() && frames[i+1].getFinal_frame()==false)
 					score+=10+frames[i+2].getScore_try1();
+				//if there was a strike in frame+1 and it's a last frame
 				else if(frames[i+1].getStrike() && frames[i+1].getFinal_frame())
 					score+=10;
+				//if there wasn't a strike in frame+1
 				else
 					score+=frames[i+1].getScore_try1()+frames[i+1].getScore_try2();
+			//if there was a spare in current frame and it was not the last frame
 			}else if(frames[i].getSpare() && frames[i].getFinal_frame()==false){
 				score+=frames[i+1].getScore_try1();
 			}

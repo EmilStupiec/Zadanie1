@@ -33,9 +33,11 @@ public class App
     	Integer result1,result2;
     	for(int i=0;i<10;i++){
     		result1=generator.nextInt(11);
-    		game.roll(result1);
     		result2=generator.nextInt(11-result1);
-    		game.roll(result2);
+    		game.roll(result1);
+    		if(result1<10){
+    			game.roll(result2);
+    		}
     		if(game.getFinal_frame() && game.getWas_bonus() && (result1+result2<10)){
     			Integer result3=generator.nextInt(11-(result1+result2));
     			System.out.println("Res3: "+result3+" "+game.getFinal_frame()+" "+game.getWas_bonus()+" "+result1+" "+result2);
