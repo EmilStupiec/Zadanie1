@@ -9,11 +9,11 @@ import org.omg.CORBA.DynAnyPackage.InvalidValue;
 public class App 
 {
 	//creating calculator object with add method
-	private static Kata kata=new Kata();
+	private static Calculator kata=new Calculator();
 	
 	public static Integer add(String numbers) throws InvalidValue{
 		//help string
-		String numbers2="//:,1000,34\n-66,5:15";
+		String numbers2="//;,12\n12,3";
 		return kata.add(numbers2);
 	}
 	

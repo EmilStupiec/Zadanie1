@@ -8,7 +8,7 @@ import org.junit.Test;
 import org.omg.CORBA.DynAnyPackage.InvalidValue;
 
 public class KataTest {
-	Kata test_kata;
+	Calculator test_kata;
 	private String empty;
 	private String proper_one_number;
 	private String bad_one_number;
@@ -20,7 +20,7 @@ public class KataTest {
 	private String with_negatives;
 	@Before
 	public void setUp() throws Exception {
-		test_kata=new Kata();
+		test_kata=new Calculator();
 		empty="";
 		proper_one_number="15";
 		bad_one_number="13a";
