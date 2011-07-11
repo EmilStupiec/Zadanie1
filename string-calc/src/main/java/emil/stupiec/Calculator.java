@@ -3,7 +3,6 @@ package emil.stupiec;
 import java.util.ArrayList;
 import org.omg.CORBA.DynAnyPackage.InvalidValue;
 
-//class for add function
 public class Calculator {
 	Calculator(){}
 	
@@ -17,10 +16,6 @@ public class Calculator {
 		}
 	}
 	
-	private Integer sum_of_more_than_two_numbers(String in_string) throws InvalidValue{
-		String numbers_splited[]=in_string.split(create_string_matcher(in_string));
-		return sum_numbers(numbers_splited);
-	}
 	private Integer if_string_is_one_number(String in_string) throws InvalidValue{
 		Integer number=Integer.parseInt(in_string);
 		if(number<0){
@@ -29,14 +24,18 @@ public class Calculator {
 		}
 		return number;
 	}
-	private String create_string_matcher(String in_string){
+	private Integer sum_of_more_than_two_numbers(String in_string) throws InvalidValue{
+		return sum_numbers(split_string_to_numbers(in_string));
+	}
+	private String[] split_string_to_numbers(String in_string){
 		String string_matcher="[(,)(\n)";
 		if(in_string.matches("^//"+in_string.charAt(2)+"([(,)(\n)"+in_string.charAt(2)+"]-?\\d+)+")){
 			string_matcher=string_matcher+"("+in_string.charAt(2)+")]";
 			in_string=in_string.substring(4);
 		}else
 			string_matcher+="]";
-		return string_matcher;
+		String numbers_splited[]=in_string.split(string_matcher);
+		return numbers_splited;
 	}
 	private Integer sum_numbers(String[] numbers_splited) throws InvalidValue{
 		Integer sum=0;

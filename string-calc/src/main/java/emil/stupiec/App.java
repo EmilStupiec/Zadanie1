@@ -8,18 +8,13 @@ import org.omg.CORBA.DynAnyPackage.InvalidValue;
  */
 public class App 
 {
-	//creating calculator object with add method
 	private static Calculator kata=new Calculator();
-	
-	public static Integer add(String numbers) throws InvalidValue{
-		//help string
-		String numbers2="//;,12\n12,3";
-		return kata.add(numbers2);
+	private static Integer add() throws InvalidValue{
+		String help_string="//:,12\n12:4,2,4:6,5,4\n6";
+		return kata.add(help_string);
 	}
-	
     public static void main( String[] args ) throws InvalidValue
     {
-    	//print result of add function
-    	System.out.println(add(args[0]));
+    	System.out.println(add());
     }
 }
