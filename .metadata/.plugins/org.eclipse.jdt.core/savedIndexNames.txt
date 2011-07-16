@@ -1,0 +1,12 @@
+INDEX VERSION 1.126+/home/ryu/Pulpit/eclipse_projects/Zadanie1/.metadata/.plugins/org.eclipse.jdt.core
+3903321346.index
+124411558.index
+1660165917.index
+2013154409.index
+2790120878.index
+314559849.index
+101321857.index
+3053179727.index
+2530390148.index
+771057606.index
+823456337.index

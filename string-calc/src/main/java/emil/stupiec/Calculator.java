@@ -6,7 +6,7 @@ import org.omg.CORBA.DynAnyPackage.InvalidValue;
 public class Calculator {
 	Calculator(){}
 	
-	public Integer add(String in_string) throws InvalidValue{
+	public Integer add(String in_string) throws NegativeValuesPassed{
 		if(in_string.isEmpty())
 			return 0;
 		else if(in_string.matches("^-?\\d+$")){
@@ -16,15 +16,15 @@ public class Calculator {
 		}
 	}
 	
-	private Integer if_string_is_one_number(String in_string) throws InvalidValue{
+	private Integer if_string_is_one_number(String in_string) throws NegativeValuesPassed{
 		Integer number=Integer.parseInt(in_string);
 		if(number<0){
-			InvalidValue invalid_value=new InvalidValue("negatives not allowed\nnegative passed:"+number);
-			throw invalid_value;
+			NegativeValuesPassed negative_value_passed=new NegativeValuesPassed("negatives not allowed\nnegative passed:"+number);
+			throw negative_value_passed;
 		}
 		return number;
 	}
-	private Integer sum_of_more_than_two_numbers(String in_string) throws InvalidValue{
+	private Integer sum_of_more_than_two_numbers(String in_string) throws NegativeValuesPassed{
 		return sum_numbers(split_string_to_numbers(in_string));
 	}
 	private String[] split_string_to_numbers(String in_string){
@@ -37,7 +37,7 @@ public class Calculator {
 		String numbers_splited[]=in_string.split(string_matcher);
 		return numbers_splited;
 	}
-	private Integer sum_numbers(String[] numbers_splited) throws InvalidValue{
+	private Integer sum_numbers(String[] numbers_splited) throws NegativeValuesPassed{
 		Integer sum=0;
 		for(String s: numbers_splited){
 			if(Integer.parseInt(s)<0){
@@ -47,13 +47,13 @@ public class Calculator {
 		}	
 	return sum;
 	}
-	private void check_for_other_negatives_and_throw_exception(String[] numbers_splited) throws InvalidValue{
+	private void check_for_other_negatives_and_throw_exception(String[] numbers_splited) throws NegativeValuesPassed{
 		ArrayList<Integer> negatives=new ArrayList<Integer>();
 		for(String s: numbers_splited){
 			if(Integer.parseInt(s)<0)
 				negatives.add(Integer.parseInt(s));
 		}
-		InvalidValue invalid_value=new InvalidValue("negatives not allowed\nnegatives passed:"+negatives.toString());
-		throw invalid_value;
+		NegativeValuesPassed negative_values_passed=new NegativeValuesPassed("negatives not allowed\nnegatives passed:",negatives);
+		throw negative_values_passed;
 	}
 }

@@ -54,7 +54,7 @@ public class CalculatorTest {
 		Calculator calculator=new Calculator();
 		try{
 			calculator.add("//;,3,7;-6,4,-5,-5,6;-4");
-		}catch (InvalidValue e) {
+		}catch (NegativeValuesPassed e) {
 			if(e.toString().contains("negatives passed:[-6, -5, -5, -4]"))
 				assertTrue(true);
 			else

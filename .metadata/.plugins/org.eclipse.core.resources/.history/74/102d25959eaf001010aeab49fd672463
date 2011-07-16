@@ -1,0 +1,12 @@
+package emil.stupiec;
+
+public class NegativeValuesPassed extends RuntimeException{
+	
+	public NegativeValuesPassed(){}
+	public NegativeValuesPassed(String message){
+		super(message);
+	}
+	public NegativeValuesPassed(String message, int x) {
+	    super(message);
+	}
+}
