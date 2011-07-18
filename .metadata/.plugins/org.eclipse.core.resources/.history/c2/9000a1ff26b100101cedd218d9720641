@@ -1,0 +1,58 @@
+package emil.stupiec;
+
+import java.util.ArrayList;
+
+public class Calculator {
+	Calculator(){}
+	
+	public Integer add(String in_string) throws NegativeValuesPassed{
+		if(in_string.isEmpty())
+			return 0;
+		else if(in_string.matches("^-?\\d+$")){
+			return if_string_is_one_number(in_string);
+		}else{
+			return sum_of_more_than_two_numbers(in_string);
+		}
+	}
+	
+	private Integer if_string_is_one_number(String in_string) throws NegativeValuesPassed{
+		Integer number=Integer.parseInt(in_string);
+		if(number<0){
+			NegativeValuesPassed negative_value_passed=new NegativeValuesPassed("negatives not allowed\nnegative passed:"+number);
+			throw negative_value_passed;
+		}
+		return number;
+	}
+	private Integer sum_of_more_than_two_numbers(String in_string) throws NegativeValuesPassed{
+		return sum_numbers(split_string_to_numbers(in_string));
+	}
+	private String[] split_string_to_numbers(String in_string){
+		String string_matcher="[(,)(\n)";
+		if(in_string.matches("^//"+in_string.charAt(2)+"([(,)(\n)"+in_string.charAt(2)+"]-?\\d+)+")){
+			string_matcher=string_matcher+"("+in_string.charAt(2)+")]";
+			in_string=in_string.substring(4);
+		}else
+			string_matcher+="]";
+		String numbers_splited[]=in_string.split(string_matcher);
+		return numbers_splited;
+	}
+	private Integer sum_numbers(String[] numbers_splited) throws NegativeValuesPassed{
+		Integer sum=0;
+		for(String s: numbers_splited){
+			if(Integer.parseInt(s)<0){
+				check_for_other_negatives_and_throw_exception(numbers_splited);
+			}else
+			sum+=Integer.parseInt(s);
+		}	
+	return sum;
+	}
+	private void check_for_other_negatives_and_throw_exception(String[] numbers_splited) throws NegativeValuesPassed{
+		ArrayList<Integer> negatives=new ArrayList<Integer>();
+		for(String s: numbers_splited){
+			if(Integer.parseInt(s)<0)
+				negatives.add(Integer.parseInt(s));
+		}
+		NegativeValuesPassed negative_values_passed=new NegativeValuesPassed("negatives not allowed\nnegatives passed:",negatives);
+		throw negative_values_passed;
+	}
+}

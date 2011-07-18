@@ -1,0 +1,56 @@
+package emil.stupiec;
+
+import java.util.ArrayList;
+
+public class Calculator {
+	Calculator(){}
+	
+	public Integer add(String inString) throws NegativeValuesPassed{
+		if(inString.isEmpty())
+			return 0;
+		else
+			return sumOfPassedValues(inString);
+	}
+	
+	/*private Integer if_string_is_one_number(String in_string) throws NegativeValuesPassed{
+		Integer number=Integer.parseInt(in_string);
+		if(number<0){
+			NegativeValuesPassed negative_value_passed=new NegativeValuesPassed("negatives not allowed\nnegative passed:"+number);
+			throw negative_value_passed;
+		}
+		return number;
+	}*/
+	private Integer sumOfPassedValues(String inString) throws NegativeValuesPassed{
+		return sumNumbers(splitStringToNumbers(inString));
+	}
+	private String[] splitStringToNumbers(String inString){
+		String stringMatcher="[(,)(\n)";
+		if(inString.matches("^(\\d)+$"))
+		if(inString.matches("^//"+inString.charAt(2)+"([(,)(\n)"+inString.charAt(2)+"]-?\\d+)+")){
+			stringMatcher=stringMatcher+"("+inString.charAt(2)+")]";
+			inString=inString.substring(4);
+		}else
+			stringMatcher+="]";
+		String numbersSplited[]=inString.split(stringMatcher);
+		return numbersSplited;
+	}
+	private Integer sumNumbers(String[] numbersSplited) throws NegativeValuesPassed{
+		Integer sum=0;
+		for(String s: numbersSplited){
+			if(Integer.parseInt(s)<0){
+				checkForOtherNegativesAndThrowException(numbersSplited);
+			}else
+			sum+=Integer.parseInt(s);
+		}	
+	return sum;
+	}
+	private void checkForOtherNegativesAndThrowException(String[] numbersSplited) throws NegativeValuesPassed{
+		ArrayList<Integer> negatives=new ArrayList<Integer>();
+		for(String s: numbersSplited){
+			if(Integer.parseInt(s)<0)
+				negatives.add(Integer.parseInt(s));
+		}
+		NegativeValuesPassed negative_values_passed=new NegativeValuesPassed("negatives not allowed\nnegatives passed:",negatives);
+		throw negative_values_passed;
+	}
+}

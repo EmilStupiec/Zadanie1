@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testrun name="Rerun emil.stupiec.CalculatorTest" project="string-calc" tests="7" started="7" failures="0" errors="0" ignored="0">
+  <testsuite name="emil.stupiec.CalculatorTest" time="0.006">
+    <testcase name="should_return_zero_for_empty_string" classname="emil.stupiec.CalculatorTest" time="0.0"/>
+    <testcase name="should_return_given_one_number" classname="emil.stupiec.CalculatorTest" time="0.0"/>
+    <testcase name="should_return_sum_of_two_given_numbers" classname="emil.stupiec.CalculatorTest" time="0.0"/>
+    <testcase name="should_return_sum_of_all_given_numbers" classname="emil.stupiec.CalculatorTest" time="0.003"/>
+    <testcase name="should_return_sum_of_all_given_numbers_using_new_line_delimiter" classname="emil.stupiec.CalculatorTest" time="0.001"/>
+    <testcase name="should_return_sum_of_all_given_numbers_using_different_delimiter" classname="emil.stupiec.CalculatorTest" time="0.0"/>
+    <testcase name="should_thorw_exception_for_negative_values" classname="emil.stupiec.CalculatorTest" time="0.002"/>
+  </testsuite>
+</testrun>
