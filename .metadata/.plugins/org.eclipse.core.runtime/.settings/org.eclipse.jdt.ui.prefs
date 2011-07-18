@@ -1,4 +1,4 @@
-#Sat Jul 16 13:18:36 CEST 2011
+#Mon Jul 18 13:07:40 CEST 2011
 content_assist_proposals_foreground=58,57,53
 spelling_locale_initialized=true
 org.eclipse.jdt.ui.text.templates_migrated=true
@@ -16,4 +16,5 @@ content_assist_proposals_background=255,255,255
 content_assist_number_of_computers=13
 useQuickDiffPrefPage=true
 org.eclipse.jdt.ui.text.custom_templates=<?xml version\="1.0" encoding\="UTF-8" standalone\="no"?><templates/>
+content_assist_lru_history=<?xml version\="1.0" encoding\="UTF-8" standalone\="no"?><history maxLHS\="100" maxRHS\="10"/>
 org.eclipse.jdt.ui.text.code_templates_migrated=true
